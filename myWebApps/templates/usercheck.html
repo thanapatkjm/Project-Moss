@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>e-Studentloan</title>
+        <style>
+            fieldset {
+                display: block;
+                margin-left: 10px;
+                margin-right: 2px;
+                padding-top: 0.35em;
+                padding-bottom: 0.625em;
+                padding-left: 0.75em;
+                padding-right: 0.75em;
+                border: 2px groove (internal value);
+                width:550px;
+                font-size:18px;
+                }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color:none	;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                }
+                .center {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;
+                  }
+                .box{
+                    position:absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,50%);
+                    padding: 20px;
+                    box-sizing: border-box;
+                    
+                }
+              
+        </style>
+    </head>
+    <body>
+        <fieldset>
+        <h3>History</h3>
+        Username: {{username}}<br><br>
+                <span>
+                    {% if log %}
+                </span>
+                <table border="1">
+                <tr>
+                    <th >datetime</th>
+                    <th>package_id</th>
+                    <th>package_name</th>
+                    <th>points</th>
+                    <th>In/Ex</th>
+                </tr>
+                <span>
+                    {% for userLog in log %}
+                </span>
+                <div style="overflow-x:auto;"></div>
+                <tr>
+                    <td style="font-size: 80%">{{userLog.datetime}}</td>
+                    <td style="font-size: 80%">{{userLog.package_id}}</td>
+                    <td style="font-size: 80%">{{userLog.name}}</td>
+                    <td style="font-size: 80%">{{userLog.points}}</td>
+                    <td style="font-size: 80%">{{userLog.InEx}}</td>
+                </tr>
+                </div>
+                </form>
+
+                        {% endfor%}
+                </table>
+                <span>
+                    {% else %}
+                    There is No History of this Account.
+                    {% endif %}
+                </span>
+                </fieldset>
+
+        
+    </body>
+</html>

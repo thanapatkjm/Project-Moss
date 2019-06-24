@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>e-Studentloan</title>
+        <style>
+            fieldset {
+                display: block;
+                margin-left: 10px;
+                margin-right: 2px;
+                padding-top: 0.35em;
+                padding-bottom: 0.625em;
+                padding-left: 0.75em;
+                padding-right: 0.75em;
+                border: 2px groove (internal value);
+                width:550px;
+                font-size:18px;
+                }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color:none	;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                }
+                .center {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;
+                  }
+                .box{
+                    position:absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,50%);
+                    padding: 20px;
+                    box-sizing: border-box;
+                    
+                }
+              
+        </style>
+    </head>
+    <body>
+        <fieldset class="small">
+        <legend><h3>User Informations</h3></legend>
+        <span>
+            Username: {{username}}<br><br>
+            Point(s): {{points}} <br><br> 
+        </span>	
+            <span class="ssp" style="color: white">{{err}}</span>
+            <form action="{% url 'myWeb:libraryexpense' user_id %}" method="post">
+            <span class="ssp" style="color: white">{% csrf_token %}</span>
+            <input type="text" name="ex_points" placeholder="Expense Points">
+            <input type="submit" value="Expense">
+            </span>
+            </form>
+            </span>	
+        </fieldset>                         
+    </body>
+</html>
