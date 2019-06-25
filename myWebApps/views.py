@@ -243,8 +243,18 @@ def adminchangepass(request,user_id):
         return HttpResponseRedirect(reverse('myWeb:home'))
 
 def adminpassChanged(request,user_id):
-    pass
-
+    if request.user.is_superuser: 
+        user = User.objects.get(id=user_id)
+        username = user.username
+        if(request.POST['Npassword']==request.POST['Cpassword']):
+            user.set_password(request.POST['Npassword'])
+            user.save()
+            return HttpResponseRedirect(reverse('myWeb:home'))
+        else:
+            return render(request,'changepass.html',{'err':"Confirmed password does not match.","user":username,"user_id":user_id})
+    else:
+        return HttpResponseRedirect(reverse('myWeb:home'))
+        
 def adminlibrary(request):
     # return HttpResponseRedirect(reverse('myWeb:logout'))
     if request.user.username == "adminlibrary":
